@@ -3,7 +3,7 @@
 // ============================== IMPORT ==============================
 
 import "./style.css";
-import "./api.js";
+import { requestAPI } from "./api.js";
 // ============================== TEST ==============================
 
-console.log();
+requestAPI();
