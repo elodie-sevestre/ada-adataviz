@@ -1,3 +1,31 @@
+/* réinit des paramètres css */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* variables */
+
+:root {
+  --main-font-color: blue;
+}
+
+/* body */
+
+body {
+  color: var(--main-font-color);
+}
+
 header {
-  border: 2px solid black;
+  border: 2px dotted grey;
+}
+
+main {
+  border: 2px dotted black;
+}
+
+footer {
+  border: 2px dotted grey;
 }
