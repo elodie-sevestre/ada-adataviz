@@ -1,4 +1,4 @@
-// main.js : contient tout le code source
+// main.js : orchestration + import du CSS
 
 // ============================== IMPORT ==============================
 
