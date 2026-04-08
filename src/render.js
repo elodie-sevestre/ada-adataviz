@@ -1,5 +1,7 @@
 // render.js : création des cartes HTML
 
+import "./api.js";
+
 const data = await requestAPI();
 // console.log(data);
 const container = document.getElementById("data");
