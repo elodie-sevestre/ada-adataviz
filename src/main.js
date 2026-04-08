@@ -1,17 +1,13 @@
-// main.js : orchestration + import du CSS
+// main.js : point d'entrée de l'application
+// Responsabilité unique : importer les modules et initialiser l'app
 
-// ============================== IMPORT ==============================
-
+// Import du fichier de styles global
 import "./style.css";
-import { requestAPI } from "./api.js";
-// ============================== TEST ==============================
 
-const data = await requestAPI();
-// console.log(data);
-const container = document.getElementById("data");
+// Import du module API (déclenche son initialisation si nécessaire)
+import "./api.js";
 
-data.results.forEach((item) => {
-  const div = document.createElement("div");
-  div.innerHTML = `<h3>${item.site.replaceAll("_", " ") || "Sans nom"}</h3>`;
-  container.appendChild(div);
-});
+// Import du module de rendu — déclenche automatiquement :
+// 1. la requête à l'API
+// 2. la création et l'affichage des cartes dans le DOM
+import "./render.js";
