@@ -1,13 +1,21 @@
 // render.js : création des cartes HTML
 
-import "./api.js";
+// ============================== IMPORT ==============================
+
+import { requestAPI } from "./api.js";
+
+// ============================== DOM ==============================
 
 const data = await requestAPI();
-// console.log(data);
-const container = document.getElementById("data");
+const list = document.getElementById("born-list");
 
-data.results.forEach((item) => {
-  const div = document.createElement("div");
-  div.innerHTML = `<h3>${item.site.replaceAll("_", " ") || "Sans nom"}</h3>`;
-  container.appendChild(div);
-});
+export const createCard = (result) => {
+  const results = data.results;
+  results.forEach((result) => {
+    const div = document.createElement("div");
+    div.innerHTML = `${result.site.replaceAll("_", " ")} - ${result.adresse}`;
+    list.appendChild(div);
+  });
+};
+
+createCard();
