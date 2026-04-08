@@ -7,17 +7,21 @@
     <title>ada-adataviz</title>
   </head>
   <body>
-    <div id="app">
-      <header>Header : Adataviz - Wifi Nantes</header>
-      <main id="data">
-        Main
-        <ul id="born-list">
-          Liste des bornes wifi
-        </ul>
-        <button id="load-more"></button>
-      </main>
-      <footer>Footer</footer>
-    </div>
+    <header class="section"><h1>Soufflez, c'est connecté</h1></header>
+    <main class="section" id="data">
+      <section id="search-zone">
+        <input
+          type="text"
+          id="search-input"
+          placeholder="Recherche une commune"
+        />
+        <button id="search-button">Rechercher</button>
+      </section>
+      <p id="counter">"X bornes trouvées"</p>
+      <div class="cards" id="born-list"></div>
+      <button class="load-more-button" id="load-more">Charger plus</button>
+    </main>
+    <footer class="section">Footer</footer>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

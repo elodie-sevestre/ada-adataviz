@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap");
+
 /* réinit des paramètres css */
 
 * {
@@ -9,23 +11,57 @@
 /* variables */
 
 :root {
-  --main-font-color: blue;
+  --main-background-color: beige;
+  --main-font-family: Orbitron, sans-serif;
+  --main-font-color: black;
+  --main-font-size: 18px;
+  --main-margin: 0.5em;
 }
 
 /* body */
 
 body {
+  background-color: var(--main-background-color);
+  font-family: var(--main-font-family);
+  font-size: 18px;
   color: var(--main-font-color);
+  font-size: var(--main-font-size);
+  text-align: center;
+  margin: var(--main-margin);
+  /* display: flex; */
+}
+
+.section {
+  margin: var(--main-margin);
 }
 
 header {
+  font-size: 24px;
   border: 2px dotted grey;
 }
 
-main {
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  /* grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); */
+  gap: 12px;
+}
+
+.card {
   border: 2px dotted black;
 }
 
 footer {
   border: 2px dotted grey;
+}
+
+@media (max-width: 900px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 500px) {
+  .cards {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
