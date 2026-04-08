@@ -9,10 +9,9 @@ export const requestAPI = async () => {
     URLparameters.set("limit", "20");
     URLparameters.set("offset", "0");
 
-    const url = `
-        https://data.nantesmetropole.fr/api/explore/v2.1/catalog/datasets/244400404_wifi-public-exterieur-nantes-metropole/records`;
+    const url = `https://data.nantesmetropole.fr/api/explore/v2.1/catalog/datasets/244400404_wifi-public-exterieur-nantes-metropole/records`;
     const reponse = await fetch(`${url}?${URLparameters}`); // requête HTTP
-    console.log(reponse.status);
+    console.log(reponse);
     const data = await reponse.json(); // extraire JSON
     // console.log(data.total_count);
     // console.log(data.results);
