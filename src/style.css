@@ -10,12 +10,14 @@
 
 :root {
   --main-font-color: blue;
+  --main-font-size: 20px;
 }
 
 /* body */
 
 body {
   color: var(--main-font-color);
+  font-size: var(--main-font-size);
 }
 
 header {
