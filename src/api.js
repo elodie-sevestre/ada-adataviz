@@ -13,7 +13,7 @@ export const requestAPI = async () => {
     // URLSearchParams permet de construire les paramètres de l'URL proprement
     // sans concaténer des chaînes à la main
     const URLparameters = new URLSearchParams();
-    URLparameters.set("limit", "20"); // nombre de résultats par page
+    URLparameters.set("limit", "8"); // nombre de résultats par page
     URLparameters.set("offset", "0"); // point de départ (0 = depuis le début)
 
     const response = await fetch(`${url}?${URLparameters}`); // requête HTTP GET

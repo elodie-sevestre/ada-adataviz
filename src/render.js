@@ -14,8 +14,9 @@ const list = document.getElementById("born-list");
  */
 export const createCard = (result) => {
   const div = document.createElement("div");
+  div.classList.add("card");
 
-  div.innerHTML = `${result.site.replaceAll("_", " ")} - ${result.adresse}`;
+  div.innerHTML = `${result.site.replaceAll("_", " ")}`;
 
   list.appendChild(div); // insère la carte dans le DOM
 };
