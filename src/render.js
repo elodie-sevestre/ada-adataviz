@@ -37,6 +37,6 @@ export const createCard = (result) => {
 };
 
 export const renderList = (results) => {
-  list.innerHTML = ""; // vide la liste avant d'afficher
+  // list.innerHTML = ""; // vide la liste avant d'afficher
   results.forEach((result) => createCard(result)); // pour chaque borne, on crée et affiche une carte
 };
