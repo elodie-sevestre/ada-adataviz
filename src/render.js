@@ -1,8 +1,6 @@
 // render.js : construit et insère les cartes HTML dans le DOM
 // Responsabilité unique : affichage des données reçues
 
-import { requestAPI } from "./api.js";
-
 // Récupération de l'élément HTML qui contiendra la liste des bornes
 const list = document.getElementById("born-list");
 
@@ -39,8 +37,6 @@ export const createCard = (result) => {
   });
 };
 
-// Appel à l'API (await possible ici car le fichier est chargé comme module ES)
-const data = await requestAPI();
-
-// Pour chaque borne reçue, on crée et affiche une carte
-data.results.forEach((result) => createCard(result));
+export const renderList = (results) => {
+  results.forEach((result) => createCard(result)); // pour chaque borne, on crée et affiche une carte
+};
