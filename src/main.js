@@ -13,8 +13,12 @@ import { requestAPI } from "./api.js";
 import { renderList } from "./render.js";
 
 // Import du module de recherche
-
 import "./search.js";
+
+// Import du module de pagination/charger plus
+import "./pagination.js";
+
+// ==============================================================================
 
 export let query = "";
 export let offset = 0;
@@ -26,7 +30,7 @@ export const setOffset = (value) => {
   offset = value;
 };
 
-export const loading = async () => {
+export const loading = async (query, offset) => {
   // console.log("query :", query);
   const data = await requestAPI(query, offset);
   renderList(data.results);
@@ -36,9 +40,10 @@ export const loading = async () => {
   // afficher quand une recherche est effectuée
   if (query) {
     counterContainer.classList.remove("hidden");
+    // modifier la valeur de X en fonction du nombre de résultats
+    const counterBorn = document.querySelector("span");
+    counterBorn.textContent = `${data.total_count}`;
   }
-  // modifier la valeur de X en fonction du nombre de résultats
-  const counterBorn = document.querySelector("span");
 };
 
-loading();
+loading(query, offset);

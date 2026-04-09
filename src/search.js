@@ -21,4 +21,5 @@ searchButton.addEventListener("click", () => {
   setOffset(0);
   // j'appelle loading()
   loading();
+  searchInput.value = "";
 });
