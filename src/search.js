@@ -1,5 +1,9 @@
 // search.js : logique de la barre de recherche
 
+// IMPORTS
+
+import { setQuery, setOffset, loading } from "./main";
+
 // je récupère le bouton et l'input dans le HTML
 
 const searchInput = document.getElementById("search-input");
@@ -11,9 +15,9 @@ searchButton.addEventListener("click", () => {
   // je lis ce qu'il y a dans l'input
   const userSearch = searchInput.value;
   // je mets à jour query avec ce texte en minuscules
-  query = userSearch.toLowerCase();
+  setQuery(userSearch.value);
   // je remets offset à 0
-  offset = 0;
+  setOffset(0);
   // j'appelle loading()
   loading();
 });
