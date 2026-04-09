@@ -20,10 +20,12 @@ export const requestAPI = async (query, offset) => {
     URLparameters.set("limit", "8"); // nombre de résultats par page
     URLparameters.set("offset", offset); // point de départ (0 = depuis le début)
     if (query) {
-      URLparameters.set("where", `commune="${query}"`);
+      URLparameters.set("where", `commune like '${query}'`);
     }
+    console.log(url);
 
     const response = await fetch(`${url}?${URLparameters}`); // requête HTTP GET
+    console.log(response);
     const data = await response.json(); // convertit la réponse en objet JavaScript
     return data;
   } catch (error) {
