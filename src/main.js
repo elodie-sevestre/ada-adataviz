@@ -30,6 +30,15 @@ export const loading = async () => {
   // console.log("query :", query);
   const data = await requestAPI(query, offset);
   renderList(data.results);
+  // masquer par défaut <p id="counter">"X bornes trouvées"</p>
+  const counterContainer = document.getElementById("counter");
+  counterContainer.classList.add("hidden");
+  // afficher quand une recherche est effectuée
+  if (query) {
+    counterContainer.classList.remove("hidden");
+  }
+  // modifier la valeur de X en fonction du nombre de résultats
+  const counterBorn = document.querySelector("span");
 };
 
 loading();
