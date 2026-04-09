@@ -7,7 +7,6 @@ const list = document.getElementById("born-list");
 /**
  * Crée une carte HTML pour une borne wifi et l'ajoute à la liste.
  * @param {Object} result objet représentant une borne wifi
- * @param {string} result.site nom du site
  */
 export const createCard = (result) => {
   const div = document.createElement("div");
@@ -38,5 +37,6 @@ export const createCard = (result) => {
 };
 
 export const renderList = (results) => {
+  list.innerHTML = ""; // vide la liste avant d'afficher
   results.forEach((result) => createCard(result)); // pour chaque borne, on crée et affiche une carte
 };
