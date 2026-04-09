@@ -12,8 +12,8 @@ import { requestAPI } from "./api.js";
 // 2. la création et l'affichage des cartes dans le DOM
 import { renderList } from "./render.js";
 
-let query = "";
-let offset = 0;
+export let query = "";
+export let offset = 0;
 
 const loading = async () => {
   const data = await requestAPI(query, offset);
