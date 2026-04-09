@@ -3,7 +3,7 @@
 
 // IMPORTS
 
-import { renderList } from "./render";
+// import { renderList } from "./render";
 
 // URL de base de l'API open data de Nantes Métropole
 const url = `https://data.nantesmetropole.fr/api/explore/v2.1/catalog/datasets/244400404_wifi-public-exterieur-nantes-metropole/records`;
@@ -25,8 +25,7 @@ export const requestAPI = async (query, offset) => {
 
     const response = await fetch(`${url}?${URLparameters}`); // requête HTTP GET
     const data = await response.json(); // convertit la réponse en objet JavaScript
-
-    return data; // { total_count: number, results: Array }
+    return data;
   } catch (error) {
     // En cas d'échec réseau ou de réponse invalide
     console.error("Erreur lors de la récupération des données :", error);
