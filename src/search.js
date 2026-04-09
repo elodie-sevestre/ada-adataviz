@@ -16,6 +16,7 @@ searchButton.addEventListener("click", () => {
   const userSearch = searchInput.value;
   // je mets à jour query avec ce texte en minuscules
   setQuery(userSearch.toLowerCase());
+
   // je remets offset à 0
   setOffset(0);
   // j'appelle loading()

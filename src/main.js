@@ -27,6 +27,7 @@ export const setOffset = (value) => {
 };
 
 export const loading = async () => {
+  // console.log("query :", query);
   const data = await requestAPI(query, offset);
   renderList(data.results);
 };
