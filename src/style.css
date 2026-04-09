@@ -51,6 +51,14 @@ header {
   border: 2px dotted black;
 }
 
+/* masquer par défaut */
+
+.hidden {
+  display: none;
+}
+
+/* ========================== BAS DE PAGE ========================== */
+
 footer {
   border: 2px dotted grey;
 }
