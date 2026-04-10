@@ -35,10 +35,10 @@ export const setTotalCount = (value) => {
   totalCount = value;
 };
 
-export const loading = async (query, offset) => {
+export const loading = async (query, offset, append) => {
   // console.log("query :", query);
   const data = await requestAPI(query, offset);
-  renderList(data.results);
+  renderList(data.results, append);
   setTotalCount(data.total_count);
   // masquer par défaut <p id="counter">"X bornes trouvées"</p>
   const counterContainer = document.getElementById("counter");
@@ -52,4 +52,4 @@ export const loading = async (query, offset) => {
   }
 };
 
-loading(query, offset);
+loading(query, offset, true);

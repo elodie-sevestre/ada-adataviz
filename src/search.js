@@ -2,7 +2,8 @@
 
 // IMPORTS
 
-import { setQuery, setOffset, loading, query, offset } from "./main";
+import { setQuery, setOffset, loading, query } from "./main";
+import { currentOffset } from "./pagination";
 
 // je récupère le bouton et l'input dans le HTML
 
@@ -20,6 +21,6 @@ searchButton.addEventListener("click", () => {
   // je remets offset à 0
   setOffset(0);
   // j'appelle loading()
-  loading(query, offset);
+  loading(query, currentOffset, false);
   searchInput.value = "";
 });
