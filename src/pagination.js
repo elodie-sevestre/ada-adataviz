@@ -1,7 +1,8 @@
 // pagination.js : logique offset / charger plus
 
 // import
-import { query, loading, totalCount } from "./main.js";
+import { loading } from "./main.js";
+import "./state.js";
 
 // je récupère le bouton "charger plus" dans le HTML
 const moreLoadButton = document.getElementById("load-more");

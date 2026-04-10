@@ -1,8 +1,8 @@
 // search.js : logique de la barre de recherche
 
 // IMPORTS
-
-import { setQuery, setOffset, loading, query } from "./main";
+import "./state";
+import { loading } from "./main";
 import { currentOffset } from "./pagination";
 
 // je récupère le bouton et l'input dans le HTML
