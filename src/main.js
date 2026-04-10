@@ -9,7 +9,7 @@ import { requestAPI } from "./api.js";
 
 // Import du module d'initialisation des variables
 
-import "./state.js";
+import { query, offset, setTotalCount } from "./state.js";
 
 // Import du module de rendu — déclenche automatiquement :
 // 1. la requête à l'API
