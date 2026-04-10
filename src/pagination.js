@@ -6,13 +6,13 @@ import { query, loading, totalCount } from "./main.js";
 // je récupère le bouton "charger plus" dans le HTML
 const moreLoadButton = document.getElementById("load-more");
 
-let currentOffset = 0;
+export let currentOffset = 0;
 // quand on clique sur le bouton :
 moreLoadButton.addEventListener("click", () => {
   // j'augmente offset de 8
   currentOffset += 8;
   // j'appelle loading() en mode "ajouter" (append = true)
-  loading(query, currentOffset);
+  loading(query, currentOffset, true);
   if (currentOffset >= totalCount) {
     moreLoadButton.classList.add("hidden");
   }
