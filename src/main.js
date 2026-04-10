@@ -7,6 +7,10 @@ import "./style.css";
 // Import du module API (déclenche son initialisation si nécessaire)
 import { requestAPI } from "./api.js";
 
+// Import du module d'initialisation des variables
+
+import "./state.js";
+
 // Import du module de rendu — déclenche automatiquement :
 // 1. la requête à l'API
 // 2. la création et l'affichage des cartes dans le DOM
@@ -19,21 +23,6 @@ import "./search.js";
 import "./pagination.js";
 
 // ==============================================================================
-
-export let query = "";
-export let offset = 0;
-export let totalCount = 0;
-
-export const setQuery = (value) => {
-  query = value;
-};
-export const setOffset = (value) => {
-  offset = value;
-};
-
-export const setTotalCount = (value) => {
-  totalCount = value;
-};
 
 export const loading = async (query, offset, append) => {
   // console.log("query :", query);
