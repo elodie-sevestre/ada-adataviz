@@ -22,10 +22,8 @@ export const requestAPI = async (query, offset) => {
     if (query) {
       URLparameters.set("where", `commune like '${query}'`);
     }
-    console.log(url);
 
     const response = await fetch(`${url}?${URLparameters}`); // requête HTTP GET
-    console.log(response);
     const data = await response.json(); // convertit la réponse en objet JavaScript
     return data;
   } catch (error) {

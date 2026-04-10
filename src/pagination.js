@@ -1,7 +1,7 @@
 // pagination.js : logique offset / charger plus
 
 // import
-import "./main.js";
+import { query, loading, totalCount } from "./main.js";
 
 // je récupère le bouton "charger plus" dans le HTML
 const moreLoadButton = document.getElementById("load-more");
@@ -13,6 +13,9 @@ moreLoadButton.addEventListener("click", () => {
   currentOffset += 8;
   // j'appelle loading() en mode "ajouter" (append = true)
   loading(query, currentOffset);
+  if (currentOffset >= totalCount) {
+    moreLoadButton.classList.add("hidden");
+  }
 });
 
 // render.js

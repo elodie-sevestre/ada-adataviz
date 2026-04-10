@@ -22,6 +22,7 @@ import "./pagination.js";
 
 export let query = "";
 export let offset = 0;
+export let totalCount = 0;
 
 export const setQuery = (value) => {
   query = value;
@@ -30,10 +31,15 @@ export const setOffset = (value) => {
   offset = value;
 };
 
+export const setTotalCount = (value) => {
+  totalCount = value;
+};
+
 export const loading = async (query, offset) => {
   // console.log("query :", query);
   const data = await requestAPI(query, offset);
   renderList(data.results);
+  setTotalCount(data.total_count);
   // masquer par défaut <p id="counter">"X bornes trouvées"</p>
   const counterContainer = document.getElementById("counter");
   counterContainer.classList.add("hidden");
