@@ -6,6 +6,9 @@
 // au lieu de gérer leur propre copie locale.
 // ============================================================
 
+// Nombre de résultats affichés au départ
+export const initResultToShow = 8;
+
 // La recherche en cours (ex: "nantes"). Vide par défaut.
 export let query = "";
 
@@ -19,6 +22,12 @@ export let totalCount = 0;
 // On ne peut pas modifier directement une variable importée
 // depuis un autre fichier. On passe donc par ces fonctions.
 
-export const setQuery = (value) => { query = value; };
-export const setOffset = (value) => { offset = value; };
-export const setTotalCount = (value) => { totalCount = value; };
+export const setQuery = (value) => {
+  query = value;
+};
+export const setOffset = (value) => {
+  offset = value;
+};
+export const setTotalCount = (value) => {
+  totalCount = value;
+};

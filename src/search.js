@@ -19,6 +19,10 @@ const searchButton = document.getElementById("search-button");
 // ---- Événement ---------------------------------------------
 
 searchButton.addEventListener("click", () => {
+  search();
+});
+
+const search = () => {
   const userSearch = searchInput.value;
 
   setQuery(userSearch.toLowerCase()); // on met à jour la recherche dans state.js
@@ -29,4 +33,4 @@ searchButton.addEventListener("click", () => {
 
   searchInput.value = ""; // on vide le champ de saisie
   manageLoadBtnVisibility();
-});
+};
