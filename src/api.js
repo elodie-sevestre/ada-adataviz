@@ -5,6 +5,12 @@
 // les données brutes. Ne touche pas au DOM.
 // ============================================================
 
+// ---- Imports -----------------------------------------------
+
+import { initResultToShow } from "./state";
+
+// ---- URL API -----------------------------------------------
+
 const url = `https://data.nantesmetropole.fr/api/explore/v2.1/catalog/datasets/244400404_wifi-public-exterieur-nantes-metropole/records`;
 
 // ---- Requête principale ------------------------------------
@@ -20,7 +26,7 @@ export const requestAPI = async (query, offset) => {
     // URLSearchParams construit les paramètres proprement
     // sans avoir à coller des chaînes à la main dans l'URL
     const URLparameters = new URLSearchParams();
-    URLparameters.set("limit", "8");   // nombre de résultats par page
+    URLparameters.set("limit", initResultToShow); // nombre de résultats par page au départ
     URLparameters.set("offset", offset); // depuis quel résultat on commence
     if (query) {
       URLparameters.set("where", `commune like '${query}'`);
