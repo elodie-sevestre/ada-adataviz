@@ -20,12 +20,22 @@ moreLoadButton.addEventListener("click", () => {
   // On avance de 8 dans les résultats (liaison vivante : offset reflète
   // toujours la valeur à jour dans state.js)
   setOffset(offset + 8);
-
   // append = true : on ajoute les nouvelles cartes sans effacer les précédentes
   loading(query, offset, true);
 
   // Si on a affiché tous les résultats, on cache le bouton
-  if (offset >= totalCount) {
-    moreLoadButton.classList.add("hidden");
-  }
+  manageLoadBtnVisibility();
 });
+
+// fonction pour gérer apparition/masque charger plus
+
+export const manageLoadBtnVisibility = () => {
+  console.log("offset :" + offset);
+  console.log("totalCount : " + totalCount);
+
+  if (offset > totalCount) {
+    moreLoadButton.classList.add("hidden");
+  } else {
+    moreLoadButton.classList.remove("hidden");
+  }
+};
