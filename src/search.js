@@ -9,6 +9,7 @@
 
 import { loading } from "./main";
 import { setQuery, setOffset, query, offset } from "./state";
+import { manageLoadBtnVisibility } from "./pagination";
 
 // ---- Éléments du DOM ---------------------------------------
 
@@ -27,4 +28,5 @@ searchButton.addEventListener("click", () => {
   loading(query, offset, false);
 
   searchInput.value = ""; // on vide le champ de saisie
+  manageLoadBtnVisibility();
 });
