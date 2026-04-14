@@ -28,7 +28,7 @@ export const loading = async (query, offset, append) => {
   // API : loading() reçoit total_count puis setTotalCount() le stocke dans state.js et pagination.js le lit
   setTotalCount(data.total_count);
 
-  // On cache le compteur par défaut, on l'affiche seulement si une recherche est active
+  // Cache le compteur par défaut et l'affiche seulement si une recherche est active
   const counterContainer = document.getElementById("counter");
   counterContainer.classList.add("hidden");
   if (query) {
