@@ -16,10 +16,10 @@ const url = `https://data.nantesmetropole.fr/api/explore/v2.1/catalog/datasets/2
 // ---- Requête principale ------------------------------------
 
 /**
- * Récupère les bornes wifi depuis l'API.
- * @param {string} query - La commune recherchée (ex: "nantes"). Vide = tout afficher.
- * @param {number} offset - Le point de départ des résultats (0 = depuis le début).
- * @returns {Promise<Object>} - Un objet avec total_count (nombre total) et results (tableau de bornes).
+ * Récupère les bornes wifi depuis l'API
+ * @param {string} query : commune recherchée
+ * @param {number} offset : index de départ des résultats
+ * @returns {Promise<Object>} : objet avec total_count (nombre total) et results (tableau de bornes)
  */
 export const requestAPI = async (query, offset) => {
   try {
