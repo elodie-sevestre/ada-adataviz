@@ -1,13 +1,12 @@
-// ============================================================
+// ========================================================================
 // pagination.js — logique du bouton "charger plus"
-// ============================================================
-// Responsabilité unique : incrémenter l'offset à chaque clic
-// et cacher le bouton quand il n'y a plus de résultats.
-// ============================================================
+// ========================================================================
+// Responsabilité unique : gère bouton et offset de pagination
+// ========================================================================
 
-// ---- Imports -----------------------------------------------
+// ---- Imports -----------------------------------------------------------
 
-import { loading } from "./main.js";
+import { loading } from "./loader";
 import {
   query,
   offset,
@@ -16,24 +15,22 @@ import {
   initResultToShow,
 } from "./state.js";
 
-// ---- Élément du DOM ----------------------------------------
+// ---- Élément du DOM ----------------------------------------------------
 
 const moreLoadButton = document.getElementById("load-more");
 
-// ---- Événement ---------------------------------------------
+// ---- Événement ---------------------------------------------------------
 
 moreLoadButton.addEventListener("click", async () => {
-  // On avance de 8 dans les résultats (liaison vivante : offset reflète
-  // toujours la valeur à jour dans state.js)
+  // avance le point de départ de X résultats
   setOffset(offset + initResultToShow);
-  // append = true : on ajoute les nouvelles cartes sans effacer les précédentes
+  // charge les X résultats suivants sans effacer les précédents
   await loading(query, offset, true);
-
-  // Si on a affiché tous les résultats, on cache le bouton
+  // cache le bouton si tous les résultats sont affichés
   manageLoadBtnVisibility();
 });
 
-// fonction pour gérer apparition/masque charger plus
+// ---- Visibilité du bouton ----------------------------------------------
 
 export const manageLoadBtnVisibility = () => {
   if (offset + initResultToShow >= totalCount) {
