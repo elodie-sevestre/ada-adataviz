@@ -1,17 +1,16 @@
-// ============================================================
-// render.js — construction et affichage des cartes dans le DOM
-// ============================================================
-// Responsabilité unique : recevoir des données et les afficher.
-// Ne fait pas de requête API, ne gère pas les événements de recherche.
-// ============================================================
+// ========================================================================
+// render.js — affichage des cartes
+// ========================================================================
+// Responsabilité unique : reçoit données et les affiche
+// ========================================================================
 
 const list = document.getElementById("born-list");
 
-// ---- Création d'une carte ----------------------------------
+// ---- Création d'une carte ----------------------------------------------
 
 /**
- * Crée une carte HTML pour une borne wifi et l'insère dans la liste.
- * @param {Object} result - Un objet représentant une borne (site, adresse, commune...).
+ * Crée et insère une carte pour une borne wifi.
+ * @param {Object} result : borne wifi
  */
 export const createCard = (result) => {
   const div = document.createElement("div");
@@ -29,24 +28,25 @@ export const createCard = (result) => {
   const details = div.querySelector(".details");
   const button = div.querySelector(".load-details");
 
-  // Affiche ou cache les détails au clic, et change le texte du bouton
+  // affiche ou cache les détails et adapte le texte du bouton
   button.addEventListener("click", () => {
     details.classList.toggle("hidden");
-    button.textContent = button.textContent === "Voir plus" ? "Voir moins" : "Voir plus";
+    button.textContent =
+      button.textContent === "Voir plus" ? "Voir moins" : "Voir plus";
   });
 };
 
-// ---- Affichage de la liste ---------------------------------
+// ---- Affichage de la liste ---------------------------------------------
 
 /**
- * Affiche une liste de bornes.
- * @param {Array} results - Le tableau de bornes renvoyé par l'API.
- * @param {boolean} append - Si false, vide la liste avant d'afficher (nouvelle recherche).
- *                           Si true, ajoute à la suite (charger plus).
+ * Affiche une liste de bornes
+ * @param {Array} results : tableau de bornes renvoyé par API
+ * @param {boolean} append : si false -> liste vidée
+ *                           si true -> ajoute à la suite
  */
 export const renderList = (results, append) => {
   if (append === false) {
-    list.innerHTML = ""; // on efface les cartes précédentes
+    list.innerHTML = "";
   }
   results.forEach((result) => createCard(result));
 };
