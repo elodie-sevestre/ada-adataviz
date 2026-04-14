@@ -1,33 +1,31 @@
-// ============================================================
+// ========================================================================
 // api.js — communication avec l'API Nantes Métropole
-// ============================================================
-// Responsabilité unique : construire l'URL et récupérer
-// les données brutes
-// ============================================================
+// ========================================================================
+// Responsabilité unique : construit URL et récupère données brutes
+// ========================================================================
 
-// ---- Imports -----------------------------------------------
+// ---- Imports -----------------------------------------------------------
 
 import { initResultToShow } from "./state";
 
-// ---- URL API -----------------------------------------------
+// ---- URL API -----------------------------------------------------------
 
 const url = `https://data.nantesmetropole.fr/api/explore/v2.1/catalog/datasets/244400404_wifi-public-exterieur-nantes-metropole/records`;
 
-// ---- Requête principale ------------------------------------
+// ---- Requête principale ------------------------------------------------
 
 /**
  * Récupère les bornes wifi depuis l'API
  * @param {string} query : commune recherchée
  * @param {number} offset : index de départ des résultats
- * @returns {Promise<Object>} : objet avec total_count (nombre total) et results (tableau de bornes)
+ * @returns {Promise<Object>} : objet avec results et total_count
  */
 export const requestAPI = async (query, offset) => {
   try {
     // URLSearchParams construit les paramètres proprement
-    // sans avoir à coller des chaînes à la main dans l'URL
     const URLparameters = new URLSearchParams();
     URLparameters.set("limit", initResultToShow); // nombre de résultats par page au départ
-    URLparameters.set("offset", offset); // depuis quel résultat on commence
+    URLparameters.set("offset", offset); // index résultat de départ
     if (query) {
       URLparameters.set("where", `commune like '${query}'`);
     }
