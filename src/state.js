@@ -1,11 +1,10 @@
-// ============================================================
-// state.js — variables partagées entre tous les fichiers
-// ============================================================
-// Ce fichier centralise l'état de l'application
-// Les autres fichiers importent ces variables et leurs setters
-// ============================================================
+// ========================================================================
+// state.js — état partagé de l'application
+// ========================================================================
+// Responsabilité unique : centralise et exporte l'état de l'app
+// ========================================================================
 
-// Nombre de résultats affichés au départ
+// Nombre de résultats par requête
 export const initResultToShow = 8;
 
 // Recherche en cours (ex: "nantes") -> vide par défaut
@@ -17,7 +16,7 @@ export let offset = 0;
 // Nombre total de bornes renvoyées par l'API pour la recherche en cours
 export let totalCount = 0;
 
-// ---- Setters -----------------------------------------------
+// ---- Setters -----------------------------------------------------------
 // Fonction permettant de modifier les variables importées
 
 export const setQuery = (value) => {
