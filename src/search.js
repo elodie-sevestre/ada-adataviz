@@ -18,6 +18,15 @@ const searchButton = document.getElementById("search-button");
 
 // ---- Événement ---------------------------------------------------------
 
+// Event si user tape sur la touche "Entrée" après la saisie de sa recherche
+searchInput.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    search();
+  }
+});
+
+// Event si user clique sur le bouton "Rechercher" après la saisie de sa recherche
+
 searchButton.addEventListener("click", () => {
   search();
 });
@@ -26,9 +35,9 @@ const search = () => {
   const userSearch = searchInput.value;
 
   setQuery(userSearch.toLowerCase());
-  setOffset(0); // on repart depuis le début à chaque nouvelle recherche
+  setOffset(0); // repart depuis le début à chaque nouvelle recherche
 
-  // append -> false : on vide la liste avant d'afficher les nouveaux résultats
+  // append -> false : vide la liste avant d'afficher les nouveaux résultats
   loading(query, offset, false);
 
   searchInput.value = "";
