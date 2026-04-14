@@ -1,7 +1,7 @@
 // ========================================================================
 // main.js — point d'entrée de l'application
 // ========================================================================
-// Responsabilité unique : importer le CSS et lancer l'affichage initial.
+// Responsabilité unique : importer le CSS et lancer l'affichage initial
 // ========================================================================
 
 // ---- Imports -----------------------------------------------------------
@@ -12,5 +12,5 @@ import { query, offset } from "./state.js";
 
 // ---- Initialisation ----------------------------------------------------
 
-// Chargement initial : offset = 0, pas de recherche, on ajoute (liste vide au départ)
+// offset = 0, pas de recherche, liste vide au départ
 loading(query, offset, true);
