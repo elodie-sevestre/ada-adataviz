@@ -2,7 +2,7 @@
 // api.js — communication avec l'API Nantes Métropole
 // ============================================================
 // Responsabilité unique : construire l'URL et récupérer
-// les données brutes. Ne touche pas au DOM.
+// les données brutes
 // ============================================================
 
 // ---- Imports -----------------------------------------------
