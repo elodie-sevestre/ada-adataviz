@@ -1,22 +1,22 @@
-// ============================================================
-// search.js — logique de la barre de recherche
-// ============================================================
-// Responsabilité unique : lire la saisie de l'utilisateur,
-// mettre à jour l'état et déclencher un nouveau chargement.
-// ============================================================
+// ========================================================================
+// search.js — barre de recherche
+// ========================================================================
+// Responsabilité unique : lit saisie user, met à jour l'état
+// et déclenche un nouveau chargement
+// ========================================================================
 
-// ---- Imports -----------------------------------------------
+// ---- Imports -----------------------------------------------------------
 
-import { loading } from "./main";
-import { setQuery, setOffset, query, offset } from "./state";
-import { manageLoadBtnVisibility } from "./pagination";
+import { loading } from "./loader.js";
+import { setQuery, setOffset, query, offset } from "./state.js";
+import { manageLoadBtnVisibility } from "./pagination.js";
 
-// ---- Éléments du DOM ---------------------------------------
+// ---- Éléments du DOM ---------------------------------------------------
 
 const searchInput = document.getElementById("search-input");
 const searchButton = document.getElementById("search-button");
 
-// ---- Événement ---------------------------------------------
+// ---- Événement ---------------------------------------------------------
 
 searchButton.addEventListener("click", () => {
   search();
@@ -25,12 +25,12 @@ searchButton.addEventListener("click", () => {
 const search = () => {
   const userSearch = searchInput.value;
 
-  setQuery(userSearch.toLowerCase()); // on met à jour la recherche dans state.js
+  setQuery(userSearch.toLowerCase());
   setOffset(0); // on repart depuis le début à chaque nouvelle recherche
 
-  // append = false : on vide la liste avant d'afficher les nouveaux résultats
+  // append -> false : on vide la liste avant d'afficher les nouveaux résultats
   loading(query, offset, false);
 
-  searchInput.value = ""; // on vide le champ de saisie
+  searchInput.value = "";
   manageLoadBtnVisibility();
 };
