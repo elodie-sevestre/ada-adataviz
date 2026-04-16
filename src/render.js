@@ -18,8 +18,8 @@ export const createCard = (result) => {
   div.innerHTML = `
   <p>${result.site.replaceAll("_", " ")}</p>
   <div class="details hidden">
-    <p>${result.adresse}</p>
-    <p>${result.code_postal} - ${result.commune}</p>
+    <p>${result.adresse}<br>
+    ${result.code_postal} - ${result.commune}</p>
   </div>
   <button class="load-details">Voir plus</button>
   `;

@@ -22,7 +22,9 @@
         />
         <button id="search-button">Rechercher</button>
       </section>
-      <p id="counter">"<span>X</span> borne(s) trouvée(s)"</p>
+      <p class="search-results" id="counter">
+        "<span>X</span> borne(s) trouvée(s)"
+      </p>
       <div class="cards" id="born-list"></div>
       <button class="load-more-button" id="load-more">Charger plus</button>
       <div id="map"></div>
@@ -30,6 +32,9 @@
     <footer class="section">
       <a href="#top" id="back-to-top">↑ Haut de page</a>
       <p>© 2026 Elodie Sevestre — Ada Tech School</p>
+      <a id="api-url" href="https://data.nantesmetropole.fr"
+        >Données Nantes Métropole Open Data</a
+      >
     </footer>
     <script type="module" src="/src/main.js"></script>
   </body>
