@@ -9,7 +9,7 @@
 import "./style.css";
 import { loading } from "./loader.js";
 import { query, offset } from "./state.js";
-// import "./map.js";
+import "./map.js";
 
 // ---- Initialisation ----------------------------------------------------
 

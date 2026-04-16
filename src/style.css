@@ -1,6 +1,25 @@
+/* ========================================================================
+   style.css — styles globaux de l'application
+   ========================================================================
+   Organisation :
+   1. Import police
+   2. Réinitialisation
+   3. Variables
+   4. Body et layout général
+   5. Header
+   6. Zone de recherche
+   7. Cartes
+   8. Carte géographique (map)
+   9. Utilitaires
+   10. Footer
+   11. Media queries
+   ======================================================================== */
+
+/* ---- 1. Import police ------------------------------------------------- */
+
 @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap");
 
-/* réinit des paramètres css */
+/* ---- 2. Réinitialisation ---------------------------------------------- */
 
 * {
   margin: 0;
@@ -8,19 +27,22 @@
   box-sizing: border-box;
 }
 
-/* variables */
+/* ---- 3. Variables ------------------------------------------------------ */
 
 :root {
-  --main-background-color: #d2d4dc;
+  --main-background-color: #eae8da; /* fond de page — crème chaud */
   --main-font-family: Orbitron, sans-serif;
-  --main-font-color: #1a1a1a;
+  --main-font-color: #2e2e2a;
   --main-font-size: 14px;
   --main-margin: 1.5em;
-  --card-border: 1px solid #afafaf;
-  --card-radius: 4px;
+  --card-border: 2px outset #d6d4c8; /* bordure relief style années 2000 */
+  --accent-color: #b8b49e; /* hover sur boutons et éléments interactifs */
+  --btn-background: #dedad0; /* fond des boutons */
+  --separator-color: #c8c6b8; /* bordures de séparation header / footer */
+  --card-background: #f0ede0; /* fond des cartes */
 }
 
-/* body */
+/* ---- 4. Body et layout général ---------------------------------------- */
 
 body {
   background-color: var(--main-background-color);
@@ -35,20 +57,32 @@ body {
   margin: var(--main-margin);
 }
 
+/* ---- 5. Header --------------------------------------------------------- */
+
 header {
   font-size: 20px;
-  border-bottom: 1px solid #d0d0c8;
+  border-bottom: 1px solid var(--separator-color);
   padding-bottom: 1em;
   letter-spacing: 0.1em;
 }
 
+/* ---- 6. Zone de recherche --------------------------------------------- */
+
 #search-input {
   margin-bottom: 1em;
+  font-family: var(--main-font-family);
+  font-size: 11px;
+  padding: 0.4em 0.8em;
+  background-color: #f5f4ed;
+  border: 2px inset #d6d4c8; /* inset : effet enfoncé, cohérent avec un champ de saisie */
+  color: var(--main-font-color);
 }
 
 .search-results {
   padding: 1em;
 }
+
+/* ---- 7. Cartes --------------------------------------------------------- */
 
 .cards {
   display: grid;
@@ -59,11 +93,20 @@ header {
 .card {
   display: flex;
   flex-direction: column;
-  min-height: 100px;
+  min-height: 160px;
   border: var(--card-border);
-  border-radius: var(--card-radius);
   padding: 1em;
-  background-color: #ededf2;
+  background-color: var(--card-background);
+}
+
+/* Titre centré verticalement au repos — remonte naturellement à l'apparition des détails */
+.card-title {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 500;
 }
 
 .details > p {
@@ -72,61 +115,77 @@ header {
   line-height: 1.5;
 }
 
-.card .load-details {
+/* Bouton voir plus — collé en bas de carte via margin-top: auto */
+.card .btn {
   margin-top: auto;
+}
+
+/* ---- Boutons communs --------------------------------------------------- */
+/* Appliqué à : #search-button, .load-details, #load-more, #back-to-top    */
+
+.btn {
   appearance: none;
-  background: none;
-  border: 1px solid #afafaf;
-  border-radius: var(--card-radius);
+  background-color: var(--btn-background);
+  border: var(--card-border);
   font-family: var(--main-font-family);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   padding: 0.4em 0.8em;
   cursor: pointer;
   color: var(--main-font-color);
+  text-decoration: none;
   transition: background-color 0.2s;
 }
 
-.card .load-details:hover {
-  background-color: #d2d4dc;
+.btn:hover {
+  background-color: var(--accent-color);
+}
+
+.btn:active {
+  border-style: inset;
+}
+
+/* Surcharges spécifiques */
+
+#search-button {
+  margin-bottom: 1em;
+}
+
+.card .btn {
+  font-size: 10px;
 }
 
 #load-more {
   margin: 1em;
   padding: 0.4em 1.2em;
-  appearance: none;
-  background: none;
-  border: var(--card-border);
-  border-radius: var(--card-radius);
-  font-family: var(--main-font-family);
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  cursor: pointer;
-  color: var(--main-font-color);
-  transition: background-color 0.2s;
 }
 
-#load-more:hover {
-  background-color: #c4c6ce;
+#back-to-top {
+  padding: 0.5em 1.2em;
+  letter-spacing: 0.05em;
 }
 
+/* ---- 8. Carte géographique -------------------------------------------- */
+
+/* Carte Mapbox — centrée, ratio 16/9, encadrée dans le même style que les cartes */
 #map {
-  width: 100%;
-  height: 500px;
+  width: 75%;
+  aspect-ratio: 16 / 9;
+  margin: 1em auto;
+  border: var(--card-border);
 }
 
-/* masquer par défaut */
+/* ---- 9. Utilitaires ---------------------------------------------------- */
 
 .hidden {
   display: none;
 }
 
-/* ========================== BAS DE PAGE ========================== */
+/* ---- 10. Footer -------------------------------------------------------- */
 
 footer {
-  border-top: 1px solid #d0d0c8;
+  border-top: 1px solid var(--separator-color);
   padding-top: 1em;
   margin-top: 2em;
   display: flex;
@@ -135,26 +194,11 @@ footer {
   gap: 0.8em;
 }
 
-#back-to-top {
-  font-family: var(--main-font-family);
-  font-size: 12px;
-  color: var(--main-font-color);
-  text-decoration: none;
-  border: var(--card-border);
-  border-radius: var(--card-radius);
-  padding: 0.5em 1.2em;
-  letter-spacing: 0.05em;
-  transition: background-color 0.2s;
-}
-
-#back-to-top:hover {
-  background-color: #c4c6ce;
-}
-
+/* Texte footer et lien API — même style discret */
 footer p,
 #api-url {
   font-size: 11px;
-  color: #888880;
+  color: #6e6c60;
   letter-spacing: 0.05em;
 }
 
@@ -163,8 +207,10 @@ footer p,
 }
 
 #api-url:hover {
-  color: #555550;
+  color: var(--main-font-color);
 }
+
+/* ---- 11. Media queries ------------------------------------------------- */
 
 @media (max-width: 900px) {
   .cards {

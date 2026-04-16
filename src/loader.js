@@ -1,5 +1,5 @@
 // ========================================================================
-// laoder.js — lancement de
+// loader.js — lancement de l'application
 // ========================================================================
 // Responsabilité unique : définit chargement initial et gère les modules
 // ========================================================================
@@ -8,6 +8,9 @@
 import { requestAPI } from "./api.js";
 import { renderList } from "./render.js";
 import { setTotalCount } from "./state.js";
+import { addMarkersToMap, clearMarkers } from "./map.js";
+// map.js : addMarkersToMap() place les marqueurs sur la carte
+//          clearMarkers() vide les marqueurs existants avant un nouveau chargement
 
 import "./search.js";
 import "./pagination.js";
@@ -15,14 +18,22 @@ import "./pagination.js";
 // ---- Fonction principale -----------------------------------------------
 
 /**
- * Lance une requête API et affiche les résultats.
+ * Lance une requête API, affiche les résultats en cartes et sur la carte.
  * @param {string} query : la commune recherchée. Vide = toutes les bornes.
  * @param {number} offset : le point de départ des résultats.
- * @param {boolean} append : si false -> vide liste affichée / si true -> ajoute
+ * @param {boolean} append : si false -> vide liste et marqueurs / si true -> ajoute
  */
 export const loading = async (query, offset, append) => {
   const data = await requestAPI(query, offset); //! voir pour remonter une erreur ici
   renderList(data.results, append);
+
+  // Synchronise la carte avec la liste :
+  // si append === false (nouvelle recherche ou chargement initial) -> repart de zéro
+  // si append === true (charger plus) -> ajoute les nouveaux marqueurs
+  if (append === false) {
+    clearMarkers();
+  }
+  addMarkersToMap(data.results);
 
   // Stock le total pour savoir quand cacher le bouton "charger plus"
   // API : loading() reçoit total_count puis setTotalCount() le stocke dans state.js et pagination.js le lit

@@ -16,15 +16,16 @@ export const createCard = (result) => {
   const div = document.createElement("div");
   div.classList.add("card");
   div.innerHTML = `
-  <p>${result.site.replaceAll("_", " ")}</p>
+  <div class="card-title">
+    <p>${result.site.replaceAll("_", " ")}</p>
+  </div>
   <div class="details hidden">
     <p>${result.adresse}<br>
     ${result.code_postal} - ${result.commune}</p>
   </div>
-  <button class="load-details">Voir plus</button>
+  <button class="btn load-details">Voir plus</button>
   `;
   list.appendChild(div);
-
   const details = div.querySelector(".details");
   const button = div.querySelector(".load-details");
 
