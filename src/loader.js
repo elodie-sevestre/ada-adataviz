@@ -21,7 +21,7 @@ import "./pagination.js";
  * @param {boolean} append : si false -> vide liste affichée / si true -> ajoute
  */
 export const loading = async (query, offset, append) => {
-  const data = await requestAPI(query, offset);
+  const data = await requestAPI(query, offset); //! voir pour remonter une erreur ici
   renderList(data.results, append);
 
   // Stock le total pour savoir quand cacher le bouton "charger plus"

@@ -2,18 +2,18 @@ mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
 
 // ── connect() ─────────────────────────────────────────────────────────────────
 
-let map = new mapboxgl.Map({
+export let map = new mapboxgl.Map({
   container: "map",
   style: "mapbox://styles/maelie/cmb7nnzmz00r901pact8o1xtf",
   center: [-1.55, 47.216671],
-  zoom: 5,
+  zoom: 12,
 });
 
 fetchMarkers();
 
 // ── fetchMarkers() ────────────────────────────────────────────────────────────
 
-async function fetchMarkers() {
+export async function fetchMarkers() {
   const response = await fetch(API_RECORDS);
   const data = await response.json();
   const markers = data.results;
@@ -23,7 +23,7 @@ async function fetchMarkers() {
 
 // ── addMarkersToMap() ─────────────────────────────────────────────────────────
 
-function addMarkersToMap(markers) {
+export function addMarkersToMap(markers) {
   markers.forEach((marker) => {
     const popup = new mapboxgl.Popup({ maxWidth: "260px" }).setHTML(
       buildPopupHTML(marker),
@@ -38,7 +38,7 @@ function addMarkersToMap(markers) {
 
 // ── fitMapToMarkers() ─────────────────────────────────────────────────────────
 
-function fitMapToMarkers(markers) {
+export function fitMapToMarkers(markers) {
   const bounds = new mapboxgl.LngLatBounds();
   markers.forEach((marker) =>
     bounds.extend([marker.geo_point_2d.lon, marker.geo_point_2d.lat]),

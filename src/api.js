@@ -34,5 +34,8 @@ export const requestAPI = async (query, offset) => {
     return data;
   } catch (error) {
     console.error("Erreur lors de la récupération des données :", error);
+    throw new Error("nouvelle erreur personnelle");
   }
 };
+
+//continuer à faire remonter des erreurs
