@@ -1,5 +1,5 @@
 // ========================================================================
-// map.js — gestion de la carte Mapbox
+// map.js — gestion de la carte Mapbox (codé avec Maélie)
 // ========================================================================
 // Responsabilité unique : initialise la carte et gère les marqueurs
 // ========================================================================
