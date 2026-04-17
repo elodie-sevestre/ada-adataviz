@@ -9,9 +9,6 @@ import { requestAPI } from "./api.js";
 import { renderList } from "./render.js";
 import { setTotalCount } from "./state.js";
 import { addMarkersToMap, clearMarkers } from "./map.js";
-// map.js : addMarkersToMap() place les marqueurs sur la carte
-//          clearMarkers() vide les marqueurs existants avant un nouveau chargement
-
 import "./search.js";
 import "./pagination.js";
 
@@ -27,14 +24,11 @@ export const loading = async (query, offset, append) => {
   const data = await requestAPI(query, offset);
   if (!data) {
     const title = document.getElementById("app-title");
-    title.innerText = "Sorry 🤷‍♀️ ça ne fonctionne pas!";
+    title.innerText = "Sorry ça ne fonctionne pas 🤷‍♀️";
   } else {
-    // console.log(data);
     renderList(data.results, append);
 
-    // Synchronise la carte avec la liste :
-    // si append === false (nouvelle recherche ou chargement initial) -> repart de zéro
-    // si append === true (charger plus) -> ajoute les nouveaux marqueurs
+    // Synchronise la carte avec la liste
     if (append === false) {
       clearMarkers();
     }

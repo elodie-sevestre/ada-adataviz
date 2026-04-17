@@ -30,12 +30,10 @@ export const requestAPI = async (query, offset) => {
   }
   try {
     const response = await fetch(`${url}?${URLparameters}`);
-    // console.log(response.ok);
     if (!response.ok) {
       throw new Error(`Erreur HTTP : ${response.status}`);
     }
     const data = await response.json();
-    // console.log(data);
     return data;
   } catch (error) {
     console.error(`Erreur lors de la récupération des données : ${error}`);
