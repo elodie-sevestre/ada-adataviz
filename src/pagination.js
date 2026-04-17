@@ -22,12 +22,9 @@ const moreLoadButton = document.getElementById("load-more");
 // ---- Événement ---------------------------------------------------------
 
 moreLoadButton.addEventListener("click", async () => {
-  // avance le point de départ de X résultats
-  setOffset(offset + initResultToShow);
-  // charge les X résultats suivants sans effacer les précédents
-  await loading(query, offset, true);
-  // cache le bouton si tous les résultats sont affichés
-  manageLoadBtnVisibility();
+  setOffset(offset + initResultToShow); // avance le point de départ de X résultats
+  await loading(query, offset, true); // charge les X résultats suivants sans effacer les précédents
+  manageLoadBtnVisibility(); // cache le bouton si tous les résultats sont affichés
 });
 
 // ---- Visibilité du bouton ----------------------------------------------

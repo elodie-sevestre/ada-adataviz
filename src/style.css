@@ -1,25 +1,13 @@
 /* ========================================================================
    style.css — styles globaux de l'application
    ========================================================================
-   Organisation :
-   1. Import police
-   2. Réinitialisation
-   3. Variables
-   4. Body et layout général
-   5. Header
-   6. Zone de recherche
-   7. Cartes
-   8. Carte géographique (map)
-   9. Utilitaires
-   10. Footer
-   11. Media queries
-   ======================================================================== */
+*/
 
-/* ---- 1. Import police ------------------------------------------------- */
+/* ---- Import police ----------------------------------------------------- */
 
 @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap");
 
-/* ---- 2. Réinitialisation ---------------------------------------------- */
+/* ---- Réinitialisation -------------------------------------------------- */
 
 * {
   margin: 0;
@@ -27,22 +15,22 @@
   box-sizing: border-box;
 }
 
-/* ---- 3. Variables ------------------------------------------------------ */
+/* ---- Variables --------------------------------------------------------- */
 
 :root {
-  --main-background-color: #eae8da; /* fond de page — crème chaud */
+  --main-background-color: #eae8da;
   --main-font-family: Orbitron, sans-serif;
   --main-font-color: #2e2e2a;
   --main-font-size: 14px;
   --main-margin: 1.5em;
-  --card-border: 2px outset #d6d4c8; /* bordure relief style années 2000 */
-  --accent-color: #b8b49e; /* hover sur boutons et éléments interactifs */
-  --btn-background: #dedad0; /* fond des boutons */
-  --separator-color: #c8c6b8; /* bordures de séparation header / footer */
-  --card-background: #f0ede0; /* fond des cartes */
+  --card-border: 2px outset #d6d4c8;
+  --accent-color: #b8b49e;
+  --btn-background: #dedad0;
+  --separator-color: #c8c6b8;
+  --card-background: #f0ede0;
 }
 
-/* ---- 4. Body et layout général ---------------------------------------- */
+/* ---- Body et layout général -------------------------------------------- */
 
 body {
   background-color: var(--main-background-color);
@@ -57,7 +45,7 @@ body {
   margin: var(--main-margin);
 }
 
-/* ---- 5. Header --------------------------------------------------------- */
+/* ---- Header ------------------------------------------------------------ */
 
 header {
   font-size: 20px;
@@ -66,7 +54,7 @@ header {
   letter-spacing: 0.1em;
 }
 
-/* ---- 6. Zone de recherche --------------------------------------------- */
+/* ---- Zone de recherche ------------------------------------------------- */
 
 #search-input {
   margin-bottom: 1em;
@@ -82,7 +70,7 @@ header {
   padding: 1em;
 }
 
-/* ---- 7. Cartes --------------------------------------------------------- */
+/* ---- Cartes Bornes WiFi ------------------------------------------------ */
 
 .cards {
   display: grid;
@@ -99,7 +87,7 @@ header {
   background-color: var(--card-background);
 }
 
-/* Titre centré verticalement au repos — remonte naturellement à l'apparition des détails */
+/* Titre centré verticalement au chargement et se déplace qiand on affiche les détails */
 .card-title {
   flex: 1;
   display: flex;
@@ -146,8 +134,6 @@ header {
   border-style: inset;
 }
 
-/* Surcharges spécifiques */
-
 #search-button {
   margin-bottom: 1em;
 }
@@ -166,9 +152,8 @@ header {
   letter-spacing: 0.05em;
 }
 
-/* ---- 8. Carte géographique -------------------------------------------- */
+/* ---- Carte géographique ------------------------------------------------ */
 
-/* Carte Mapbox — centrée, ratio 16/9, encadrée dans le même style que les cartes */
 #map {
   width: 75%;
   aspect-ratio: 16 / 9;
@@ -176,13 +161,13 @@ header {
   border: var(--card-border);
 }
 
-/* ---- 9. Utilitaires ---------------------------------------------------- */
+/* ---- Affichage des éléments -------------------------------------------- */
 
 .hidden {
   display: none;
 }
 
-/* ---- 10. Footer -------------------------------------------------------- */
+/* ---- Footer ------------------------------------------------------------ */
 
 footer {
   border-top: 1px solid var(--separator-color);
@@ -194,7 +179,6 @@ footer {
   gap: 0.8em;
 }
 
-/* Texte footer et lien API — même style discret */
 footer p,
 #api-url {
   font-size: 11px;
@@ -210,7 +194,7 @@ footer p,
   color: var(--main-font-color);
 }
 
-/* ---- 11. Media queries ------------------------------------------------- */
+/* ---- Media queries ------------------------------------------------- */
 
 @media (max-width: 900px) {
   .cards {

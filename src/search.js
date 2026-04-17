@@ -33,13 +33,9 @@ searchButton.addEventListener("click", () => {
 
 const search = () => {
   const userSearch = searchInput.value;
-
   setQuery(userSearch.toLowerCase());
   setOffset(0); // repart depuis le début à chaque nouvelle recherche
-
-  // append -> false : vide la liste avant d'afficher les nouveaux résultats
-  loading(query, offset, false);
-
+  loading(query, offset, false); // append -> false : vide la liste avant d'afficher les nouveaux résultats
   searchInput.value = "";
   manageLoadBtnVisibility();
 };
