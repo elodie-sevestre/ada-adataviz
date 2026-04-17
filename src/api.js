@@ -21,21 +21,24 @@ const url = `https://data.nantesmetropole.fr/api/explore/v2.1/catalog/datasets/2
  * @returns {Promise<Object>} : objet avec results et total_count
  */
 export const requestAPI = async (query, offset) => {
+  // URLSearchParams construit les paramètres proprement
+  const URLparameters = new URLSearchParams();
+  URLparameters.set("limit", initResultToShow); // nombre de résultats par page au départ
+  URLparameters.set("offset", offset); // index résultat de départ
+  if (query) {
+    URLparameters.set("where", `commune like '${query}'`);
+  }
   try {
-    // URLSearchParams construit les paramètres proprement
-    const URLparameters = new URLSearchParams();
-    URLparameters.set("limit", initResultToShow); // nombre de résultats par page au départ
-    URLparameters.set("offset", offset); // index résultat de départ
-    if (query) {
-      URLparameters.set("where", `commune like '${query}'`);
+    const response = await fetch(`${url}test?${URLparameters}`);
+    // console.log(response.ok);
+    if (!response.ok) {
+      throw new Error(`Erreur HTTP : ${response.status}`);
     }
-    const response = await fetch(`${url}?${URLparameters}`);
     const data = await response.json();
+    // console.log(data);
     return data;
   } catch (error) {
-    console.error("Erreur lors de la récupération des données :", error);
-    throw new Error("nouvelle erreur personnelle");
+    console.error(`Erreur lors de la récupération des données : ${error}`);
+    return null;
   }
 };
-
-//continuer à faire remonter des erreurs

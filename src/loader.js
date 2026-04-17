@@ -24,27 +24,33 @@ import "./pagination.js";
  * @param {boolean} append : si false -> vide liste et marqueurs / si true -> ajoute
  */
 export const loading = async (query, offset, append) => {
-  const data = await requestAPI(query, offset); //! voir pour remonter une erreur ici
-  renderList(data.results, append);
+  const data = await requestAPI(query, offset);
+  if (!data) {
+    const title = document.getElementById("app-title");
+    title.innerText = "Sorry 🤷‍♀️ ça ne fonctionne pas!";
+  } else {
+    // console.log(data);
+    renderList(data.results, append);
 
-  // Synchronise la carte avec la liste :
-  // si append === false (nouvelle recherche ou chargement initial) -> repart de zéro
-  // si append === true (charger plus) -> ajoute les nouveaux marqueurs
-  if (append === false) {
-    clearMarkers();
-  }
-  addMarkersToMap(data.results);
+    // Synchronise la carte avec la liste :
+    // si append === false (nouvelle recherche ou chargement initial) -> repart de zéro
+    // si append === true (charger plus) -> ajoute les nouveaux marqueurs
+    if (append === false) {
+      clearMarkers();
+    }
+    addMarkersToMap(data.results);
 
-  // Stock le total pour savoir quand cacher le bouton "charger plus"
-  // API : loading() reçoit total_count puis setTotalCount() le stocke dans state.js et pagination.js le lit
-  setTotalCount(data.total_count);
+    // Stock le total pour savoir quand cacher le bouton "charger plus"
+    // API : loading() reçoit total_count puis setTotalCount() le stocke dans state.js et pagination.js le lit
+    setTotalCount(data.total_count);
 
-  // Cache le compteur par défaut et l'affiche seulement si une recherche est active
-  const counterContainer = document.getElementById("counter");
-  counterContainer.classList.add("hidden");
-  if (query) {
-    counterContainer.classList.remove("hidden");
-    const counterResult = document.querySelector("span");
-    counterResult.textContent = `${data.total_count}`;
+    // Cache le compteur par défaut et l'affiche seulement si une recherche est active
+    const counterContainer = document.getElementById("counter");
+    counterContainer.classList.add("hidden");
+    if (query) {
+      counterContainer.classList.remove("hidden");
+      const counterResult = document.querySelector("span");
+      counterResult.textContent = `${data.total_count}`;
+    }
   }
 };
