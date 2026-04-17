@@ -31,11 +31,11 @@ searchButton.addEventListener("click", () => {
   search();
 });
 
-const search = () => {
+const search = async () => {
   const userSearch = searchInput.value;
   setQuery(userSearch.toLowerCase());
   setOffset(0); // repart depuis le début à chaque nouvelle recherche
-  loading(query, offset, false); // append -> false : vide la liste avant d'afficher les nouveaux résultats
+  await loading(query, offset, false); // append -> false : vide la liste avant d'afficher les nouveaux résultats
   searchInput.value = "";
   manageLoadBtnVisibility();
 };
