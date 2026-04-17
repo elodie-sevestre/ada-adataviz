@@ -134,8 +134,7 @@ function buildPopupHTML(marker) {
 
   return `
     <div class="popup-title">${site}</div>
-    <div class="popup-row"><span class="popup-label">Adresse</span><span class="popup-value">${adresse}</span></div>
-    <div class="popup-row"><span class="popup-label">Commune</span><span class="popup-value">${commune}</span></div>
-    <div class="popup-row"><span class="popup-label">Gratuit</span><span class="popup-value">${gratuite}</span></div>
+    <div class="popup-row"><span class="popup-label"></span><span class="popup-value">${adresse}</span></div>
+    <div class="popup-row"><span class="popup-label"></span><span class="popup-value">${commune}</span></div>
   `;
 }

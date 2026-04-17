@@ -93,7 +93,7 @@ header {
 .card {
   display: flex;
   flex-direction: column;
-  min-height: 160px;
+  min-height: 170px;
   border: var(--card-border);
   padding: 1em;
   background-color: var(--card-background);
