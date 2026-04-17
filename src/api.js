@@ -29,7 +29,7 @@ export const requestAPI = async (query, offset) => {
     URLparameters.set("where", `commune like '${query}'`);
   }
   try {
-    const response = await fetch(`${url}test?${URLparameters}`);
+    const response = await fetch(`${url}?${URLparameters}`);
     // console.log(response.ok);
     if (!response.ok) {
       throw new Error(`Erreur HTTP : ${response.status}`);
