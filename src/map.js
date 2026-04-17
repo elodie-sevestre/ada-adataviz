@@ -130,7 +130,6 @@ function buildPopupHTML(marker) {
   const site = marker.site.replaceAll("_", " ") || "Inconnu";
   const adresse = marker.adresse || "—";
   const commune = marker.commune || "—";
-  const gratuite = marker.gratuite || "—";
 
   return `
     <div class="popup-title">${site}</div>
