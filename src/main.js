@@ -1,13 +1,17 @@
-// main.js : point d'entrée de l'application
-// Responsabilité unique : importer les modules et initialiser l'app
+// ========================================================================
+// main.js — point d'entrée de l'application
+// ========================================================================
+// Responsabilité unique : importer le CSS et lancer l'affichage initial
+// ========================================================================
 
-// Import du fichier de styles global
+// ---- Imports -----------------------------------------------------------
+
 import "./style.css";
+import { loading } from "./loader.js";
+import { query, offset } from "./state.js";
+import "./map.js";
 
-// Import du module API (déclenche son initialisation si nécessaire)
-import "./api.js";
+// ---- Initialisation ----------------------------------------------------
 
-// Import du module de rendu — déclenche automatiquement :
-// 1. la requête à l'API
-// 2. la création et l'affichage des cartes dans le DOM
-import "./render.js";
+// offset = 0, pas de recherche, liste vide au départ
+loading(query, offset, true);

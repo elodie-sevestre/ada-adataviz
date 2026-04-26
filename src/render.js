@@ -1,28 +1,53 @@
-// render.js : construit et insère les cartes HTML dans le DOM
-// Responsabilité unique : affichage des données reçues
+// ========================================================================
+// render.js — affichage des cartes
+// ========================================================================
+// Responsabilité unique : reçoit données et les affiche
+// ========================================================================
 
-import { requestAPI } from "./api.js";
-
-// Récupération de l'élément HTML qui contiendra la liste des bornes
 const list = document.getElementById("born-list");
 
+// ---- Création d'une carte ----------------------------------------------
+
 /**
- * Crée une carte HTML pour une borne wifi et l'ajoute à la liste.
- * @param {Object} result objet représentant une borne wifi
- * @param {string} result.site nom du site
- * @param {string} result.adresse adresse de la borne
+ * Crée et insère une carte pour une borne wifi.
+ * @param {Object} result : borne wifi
  */
 export const createCard = (result) => {
   const div = document.createElement("div");
   div.classList.add("card");
+  div.innerHTML = `
+  <div class="card-title">
+    <p>${result.site.replaceAll("_", " ")}</p>
+  </div>
+  <div class="details hidden">
+    <p>${result.adresse}<br>
+    ${result.code_postal} - ${result.commune}</p>
+  </div>
+  <button class="btn load-details">Voir plus</button>
+  `;
+  list.appendChild(div);
+  const details = div.querySelector(".details");
+  const button = div.querySelector(".load-details");
 
-  div.innerHTML = `${result.site.replaceAll("_", " ")}`;
-
-  list.appendChild(div); // insère la carte dans le DOM
+  // affiche ou cache les détails et adapte le texte du bouton
+  button.addEventListener("click", () => {
+    details.classList.toggle("hidden");
+    button.textContent =
+      button.textContent === "Voir plus" ? "Voir moins" : "Voir plus";
+  });
 };
 
-// Appel à l'API (await possible ici car le fichier est chargé comme module ES)
-const data = await requestAPI();
+// ---- Affichage de la liste ---------------------------------------------
 
-// Pour chaque borne reçue, on crée et affiche une carte
-data.results.forEach((result) => createCard(result));
+/**
+ * Affiche une liste de bornes
+ * @param {Array} results : tableau de bornes renvoyé par API
+ * @param {boolean} append : si false -> liste vidée
+ *                           si true -> ajoute à la suite
+ */
+export const renderList = (results, append) => {
+  if (append === false) {
+    list.innerHTML = "";
+  }
+  results.forEach((result) => createCard(result));
+};

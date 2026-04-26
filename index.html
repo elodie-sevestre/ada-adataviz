@@ -2,12 +2,20 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="./src/img/wifi.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js"></script>
     <title>ada-adataviz</title>
   </head>
   <body>
-    <header class="section"><h1>Soufflez, c'est connecté</h1></header>
+    <header class="section" id="top">
+      <h1 id="app-title">Besoin de vous connecter gratuitement?</h1>
+      <h6>#radins4ever</h6>
+    </header>
     <main class="section" id="data">
       <section id="search-zone">
         <input
@@ -15,13 +23,22 @@
           id="search-input"
           placeholder="Recherche une commune"
         />
-        <button id="search-button">Rechercher</button>
+        <button class="btn" id="search-button">Rechercher</button>
       </section>
-      <p id="counter">"X bornes trouvées"</p>
+      <p class="search-results" id="counter">
+        "<span>X</span> borne(s) trouvée(s)"
+      </p>
       <div class="cards" id="born-list"></div>
-      <button class="load-more-button" id="load-more">Charger plus</button>
+      <button class="btn load-more-button" id="load-more">Charger plus</button>
+      <div id="map"></div>
     </main>
-    <footer class="section">Footer</footer>
+    <footer class="section">
+      <a href="#top" class="btn" id="back-to-top">↑ Haut de page</a>
+      <p>© 2026 Elodie Sevestre — Ada Tech School</p>
+      <a id="api-url" href="https://data.nantesmetropole.fr"
+        >Données Nantes Métropole Open Data</a
+      >
+    </footer>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
