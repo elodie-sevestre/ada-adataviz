@@ -28,3 +28,5 @@ export const setOffset = (value) => {
 export const setTotalCount = (value) => {
   totalCount = value;
 };
+
+// possible d'utiliser getter en plus du setter
